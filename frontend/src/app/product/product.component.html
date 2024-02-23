@@ -1,0 +1,141 @@
+<form *ngIf="MainsPage">
+    <div class="main">
+        <h1>Senior Ecommerce</h1>
+        <img src="assets/ecommerce.png">
+    </div>
+    
+    <div>
+        <input type="button" value="Produtos"   class="btn btn-primary" (click)="showProductPage()">
+        <input type="button" value="Pedidos"    class="btn btn-primary" (click)="showOrderPage()">
+        <input type="button" value="Relatórios" class="btn btn-primary" (click)="showReportPage()">
+    </div>
+</form>
+
+<div *ngIf="ProductsPage">
+    <form>
+        <img src="assets/product.png">
+    
+        <h1>Produtos</h1>
+        
+        <div class="productDiv">
+            <h4>Código interno</h4>
+            <input type="number" class="form-control" name="internalCode" [(ngModel)]="product.internalCode">
+        </div>
+        <div class="productDiv">
+            <h4>Nome</h4>
+            <input type="text"   class="form-control" name="name"         [(ngModel)]="product.name">        
+        </div>
+        <div class="productDiv">
+            <h4>Descrição</h4>
+            <input type="text"   class="form-control" name="description"  [(ngModel)]="product.description">
+        </div>
+        <div class="productDiv">
+            <h4>Quantidade</h4>
+            <input type="number" class="form-control" name="quantity"     [(ngModel)]="product.quantity">
+        </div>
+        <div class="productDiv">
+            <h4>Preço</h4>
+            <input type="number" class="form-control" name="price"        [(ngModel)]="product.price">
+        </div>
+    
+        <input type="button" value="Cadastrar" *ngIf="btnRegister" class="btn btn-primary"    (click)="insertProduct()">
+        <input type="button" value="Alterar"   *ngIf="!btnRegister" class="btn btn-warning"   (click)="updateProduct()">
+        <input type="button" value="Remover"   *ngIf="!btnRegister" class="btn btn-danger"    (click)="deleteProduct()">
+        <input type="button" value="Cancelar"  *ngIf="!btnRegister" class="btn btn-secondary" (click)="cancelProduct()">
+        <input type="button" value="Voltar"    *ngIf="btnRegister" class="btn btn-primary"    (click)="showMainPage()">
+    
+    </form>
+    
+    <table class="table" *ngIf="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>id</th>
+                <th>Código interno</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+                <th>Selecionar</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            <tr *ngFor="let c of products; index as n">
+                <td>{{n+1}}</td>
+                <td>{{c.id}}</td>
+                <td>{{c.internalCode}}</td>
+                <td>{{c.name}}</td>
+                <td>{{c.description}}</td>
+                <td>{{c.quantity}}</td>
+                <td>{{c.price}}</td>
+                <td><button class="btn btn-success" (click)="getProduct(n)">Selecionar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div *ngIf="OrdersPage">
+    <form>
+        <img src="assets/order.png">
+    
+        <h1>Pedidos</h1>
+        
+        <div class="productDiv">
+            <h4>Cliente</h4>
+            <input type="text" class="form-control">
+        </div>
+        <div class="productDiv">
+            <h4>Produtos</h4>
+            <input type="select" class="form-control">
+        </div>
+        <div class="productDiv">
+            <h4>Quantidade</h4>
+            <input type="number" class="form-control">
+        </div>
+    
+        <input type="button" value="Cadastrar" *ngIf="btnRegister" class="btn btn-primary"    (click)="insertProduct()">
+        <input type="button" value="Alterar"   *ngIf="!btnRegister" class="btn btn-warning"   (click)="updateProduct()">
+        <input type="button" value="Remover"   *ngIf="!btnRegister" class="btn btn-danger"    (click)="deleteProduct()">
+        <input type="button" value="Cancelar"  *ngIf="!btnRegister" class="btn btn-secondary" (click)="cancelProduct()">
+        <input type="button" value="Voltar"    *ngIf="btnRegister" class="btn btn-primary"    (click)="showMainPage()">
+    
+    </form>
+    
+    <table class="table" *ngIf="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>id</th>
+                <th>Número</th>
+                <th>Cliente</th>
+                <th>Produtos</th>
+                <th>Quantidade total</th>
+                <th>Valor final</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let c of orders; index as n">
+                <td>{{n+1}}</td>
+                <td>{{c.id}}</td>
+                <td>{{c.number}}</td>
+                <td>{{c.customerName}}</td>
+                <td>{{c.orderProducts}}</td>
+                <td>{{c.finalValue}}</td>
+                <td>{{c.date}}</td>
+                <td><button class="btn btn-success" (click)="getProduct(n)">Selecionar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div *ngIf="ReportsPage">
+    <form>
+        <img src="assets/report.png">
+    
+        <h1>Relatórios</h1>   
+
+        <input type="button" value="Voltar" *ngIf="btnRegister" class="btn btn-primary" (click)="showMainPage()">
+    </form>
+</div>
