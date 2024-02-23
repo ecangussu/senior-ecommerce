@@ -1,11 +1,9 @@
 package br.com.ehcs.ecommerce.entities;
 import br.com.ehcs.ecommerce.entities.PK.OrderProductPK;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.EmbeddedId;
 
 import java.io.Serializable;
 

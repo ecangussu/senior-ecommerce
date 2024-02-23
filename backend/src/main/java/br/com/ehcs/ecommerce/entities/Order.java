@@ -7,14 +7,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Column;
 import jakarta.persistence.GenerationType;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.*;
+import java.util.UUID;
+import java.util.Set;
+import java.util.HashSet;
 
 @Entity
 @Table(name = "tb_order")

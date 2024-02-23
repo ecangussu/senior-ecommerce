@@ -1,8 +1,6 @@
 package br.com.ehcs.ecommerce.services;
 
 import br.com.ehcs.ecommerce.entities.Order;
-import br.com.ehcs.ecommerce.entities.OrderProduct;
-import br.com.ehcs.ecommerce.repositories.OrderProductRepository;
 import br.com.ehcs.ecommerce.repositories.OrderRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
