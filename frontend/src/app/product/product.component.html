@@ -16,11 +16,7 @@
         <img src="assets/product.png">
     
         <h1>Produtos</h1>
-        
-        <div class="productDiv">
-            <h4>Código interno</h4>
-            <input type="number" class="form-control" name="internalCode" [(ngModel)]="product.internalCode">
-        </div>
+
         <div class="productDiv">
             <h4>Nome</h4>
             <input type="text"   class="form-control" name="name"         [(ngModel)]="product.name">        
@@ -83,21 +79,26 @@
         
         <div class="productDiv">
             <h4>Cliente</h4>
-            <input type="text" class="form-control" name="customerName" [(ngModel)]="order.customerName">
+            <input type="text" class="form-control" name="customerName" [(ngModel)]="orderProductAux.order.customerName">
+        </div>
+        <div class="productDiv">
+            <h4>CPF</h4>
+            <input type="text" class="form-control" name="cpf" [(ngModel)]="orderProductAux.order.cpf">
+        </div>
+        <div class="productDiv">
+            <h4>e-mail</h4>
+            <input type="text" class="form-control" name="customerName" [(ngModel)]="orderProductAux.order.email">
         </div>
         <div class="productDiv">
             <h4>Produto</h4>
-            <input type="text" class="form-control" name="customerName" [(ngModel)]="order.customerName">
+            <input type="text" class="form-control" name="products">
         </div>
         <div class="productDiv">
             <h4>Quantidade</h4>
-            <input type="text" class="form-control" name="customerName" [(ngModel)]="order.customerName">
+            <input type="number" class="form-control" name="quantity">
         </div>
     
-        <input type="button" value="Cadastrar" *ngIf="btnRegister" class="btn btn-primary"    (click)="insertProduct()">
-        <input type="button" value="Alterar"   *ngIf="!btnRegister" class="btn btn-warning"   (click)="updateProduct()">
-        <input type="button" value="Remover"   *ngIf="!btnRegister" class="btn btn-danger"    (click)="deleteProduct()">
-        <input type="button" value="Cancelar"  *ngIf="!btnRegister" class="btn btn-secondary" (click)="cancelProduct()">
+        <input type="button" value="Cadastrar" *ngIf="btnRegister" class="btn btn-primary"    (click)="insertOrder()">
         <input type="button" value="Voltar"    *ngIf="btnRegister" class="btn btn-primary"    (click)="showMainPage()">
     
     </form>
@@ -109,9 +110,10 @@
                 <th>id</th>
                 <th>Número</th>
                 <th>Cliente</th>
+                <th>CPF</th>
+                <th>e-mail</th>
                 <th>Valor Total</th>
                 <th>Data</th>
-                <th>Selecionar</th>
             </tr>
         </thead>
 
@@ -121,9 +123,10 @@
                 <td>{{c.id}}</td>
                 <td>{{c.number}}</td>
                 <td>{{c.customerName}}</td>
+                <td>{{c.cpf}}</td>
+                <td>{{c.email}}</td>
                 <td>{{c.total}}</td>
                 <td>{{c.date}}</td>
-                <td><button class="btn btn-success" (click)="getProduct(n)">Selecionar</button></td>
             </tr>
         </tbody>
     </table>
@@ -133,7 +136,7 @@
     <form>
         <img src="assets/report.png">
     
-        <h1>Relatórios</h1>
+        <h1>Relatórios de pedidos</h1>
 
         <input type="button" value="Voltar" *ngIf="btnRegister" class="btn btn-primary" (click)="showMainPage()">
     </form>
@@ -142,9 +145,12 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>id pedido</th>
-                <th>Numero pedido</th>
-                <th>Produto</th>
+                <th>id</th>
+                <th>Número</th>
+                <th>Cliente</th>
+                <th>CPF</th>
+                <th>e-mail</th>
+                <th>Produto(s)</th>
                 <th>Quantidade</th>
                 <th>Preço</th>
                 <th>Subtotal</th>
@@ -158,6 +164,9 @@
                 <td>{{n+1}}</td>
                 <td>{{c.id}}</td>
                 <td>{{c.number}}</td>
+                <td>{{c.customerName}}</td>
+                <td>{{c.cpf}}</td>
+                <td>{{c.email}}</td>
                 <td>
                     <table>
                         <tr *ngFor="let o of c.orderProducts">

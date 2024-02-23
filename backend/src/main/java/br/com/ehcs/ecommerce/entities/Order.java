@@ -26,6 +26,10 @@ public class Order implements Serializable {
 
     private String customerName;
 
+    private String cpf;
+
+    private String email;
+
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant date = Instant.now();
 
@@ -34,10 +38,10 @@ public class Order implements Serializable {
 
     public Order(){}
 
-    public Order(Long id, String number, String customerName) {
-        this.id = id;
-        this.number = number;
+    public Order(String customerName, String cpf, String email) {
         this.customerName = customerName;
+        this.cpf = cpf;
+        this.email = email;
     }
 
     public Long getId() {
@@ -62,6 +66,22 @@ public class Order implements Serializable {
 
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Instant getDate() {

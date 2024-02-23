@@ -11,6 +11,7 @@ import jakarta.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "tb_product")
@@ -21,7 +22,7 @@ public class Product implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long internalCode;
+    private String internalCode = UUID.randomUUID().toString();
 
     private String name;
 
@@ -36,9 +37,7 @@ public class Product implements Serializable {
 
     public Product(){}
 
-    public Product(Long id, Long internalCode, String name, String description, Integer quantity, Double price) {
-        this.id = id;
-        this.internalCode = internalCode;
+    public Product(String name, String description, Integer quantity, Double price) {
         this.name = name;
         this.description = description;
         this.quantity = quantity;
@@ -53,11 +52,11 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public Long getInternalCode() {
+    public String getInternalCode() {
         return internalCode;
     }
 
-    public void setInternalCode(Long internalCode) {
+    public void setInternalCode(String internalCode) {
         this.internalCode = internalCode;
     }
 

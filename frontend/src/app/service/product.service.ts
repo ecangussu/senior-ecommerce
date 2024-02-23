@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Product } from '../model/Product';
 import { Order } from '../model/Order';
 import { OrderProduct } from '../model/OrderProduct';
+import { OrderProductAux } from '../model/OrderProductAux';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,10 @@ export class ProductService {
 
   getOrder():Observable<Order[]>{
     return this.http.get<Order[]>(this.urlOrder);
+  }
+
+  insertOrder(obj:OrderProductAux):Observable<OrderProductAux>{
+    return this.http.post<OrderProductAux>(this.urlOrder, obj);
   }
 
   //PRODUTOS PEDIDO

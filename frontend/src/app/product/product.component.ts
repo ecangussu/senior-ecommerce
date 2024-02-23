@@ -5,6 +5,7 @@ import { Product } from '../model/Product';
 import { ProductService } from '../service/product.service';
 import { Order } from '../model/Order';
 import { OrderProduct } from '../model/OrderProduct';
+import { OrderProductAux } from '../model/OrderProductAux';
 
 @Component({
   selector: 'app-product',
@@ -123,8 +124,20 @@ export class ProductComponent {
 
   orders:Order[] = [];
 
+  orderProductAux = new OrderProductAux();
+
+  orderProductsAux:OrderProductAux[] = [];
+
   getAllOrders():void{
     this.service.getOrder().subscribe(retorno => this.orders = retorno);
+  }
+
+  insertOrder():void{
+    this.service.insertOrder(this.orderProductAux).subscribe(retorno => {
+      this.orderProductsAux.push(retorno);
+      this.orderProductAux = new OrderProductAux();
+      alert('Pedido cadastrado com sucesso!')
+    });
   }
 
   //PRODUTOS PEDIDO

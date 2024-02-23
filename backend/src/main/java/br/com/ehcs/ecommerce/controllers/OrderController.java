@@ -38,16 +38,4 @@ public class OrderController {
         return ResponseEntity.created(uri).body(order);
     }
 
-    @PutMapping(value = "/{id}")
-    public ResponseEntity<Order> update(@PathVariable Long id, @RequestBody Order order) {
-        order = orderService.update(id, order);
-        return ResponseEntity.ok().body(order);
-    }
-
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Order> delete(@PathVariable Long id) {
-        orderService.delete(id);
-        return ResponseEntity.noContent().build();
-    }
-
 }
