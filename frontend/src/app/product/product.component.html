@@ -125,8 +125,62 @@
     <form>
         <img src="assets/report.png">
     
-        <h1>Relatórios</h1>   
+        <h1>Relatórios</h1>
 
         <input type="button" value="Voltar" *ngIf="btnRegister" class="btn btn-primary" (click)="showMainPage()">
     </form>
+
+    <table class="table" *ngIf="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>id pedido</th>
+                <th>Numero pedido</th>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+                <th>Subtotal</th>
+                <th>Total</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let c of orders; index as n">
+                <td>{{n+1}}</td>
+                <td>{{c.id}}</td>
+                <td>{{c.number}}</td>
+                <td>
+                    <table>
+                        <tr *ngFor="let o of c.orderProducts">
+                            <td>{{ o.product.name }}</td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table>
+                        <tr *ngFor="let o of c.orderProducts">
+                            <td>{{ o.quantity }}</td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table>
+                        <tr *ngFor="let o of c.orderProducts">
+                            <td>{{ o.price }}</td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table>
+                        <tr *ngFor="let o of c.orderProducts">
+                            <td>{{ o.subTotal }}</td>
+                        </tr>
+                    </table>
+                </td>
+                <td>{{c.total}}</td>
+                <td>{{c.date}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

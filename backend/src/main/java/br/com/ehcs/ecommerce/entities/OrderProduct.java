@@ -17,12 +17,15 @@ public class OrderProduct implements Serializable {
 
     private Integer quantity;
 
+    private Double price;
+
     public OrderProduct(){}
 
-    public OrderProduct(Order order, Product product, Integer quantity) {
+    public OrderProduct(Order order, Product product, Integer quantity, Double price) {
         id.setOrder(order);
         id.setProduct(product);
         this.quantity = quantity;
+        this.price = price;
     }
 
     @JsonIgnore
@@ -48,6 +51,18 @@ public class OrderProduct implements Serializable {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Double getSubTotal() {
+        return price * quantity;
     }
 
     @Override
