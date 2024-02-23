@@ -1,6 +1,8 @@
 package br.com.ehcs.ecommerce.services;
 
 import br.com.ehcs.ecommerce.entities.Order;
+import br.com.ehcs.ecommerce.entities.OrderProduct;
+import br.com.ehcs.ecommerce.repositories.OrderProductRepository;
 import br.com.ehcs.ecommerce.repositories.OrderRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,8 +51,6 @@ public class OrderService {
     private Order attOrder(Order oldOrder, Order newOrder) {
         oldOrder.setNumber(newOrder.getNumber());
         oldOrder.setCustomerName(newOrder.getCustomerName());
-        oldOrder.setOrderProducts(newOrder.getOrderProducts());
-        oldOrder.setFinalValue(newOrder.getFinalValue());
         oldOrder.setDate(newOrder.getDate());
         return oldOrder;
     }

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Product } from '../model/Product';
 import { ProductService } from '../service/product.service';
 import { Order } from '../model/Order';
+import { OrderProduct } from '../model/OrderProduct';
 
 @Component({
   selector: 'app-product',
@@ -113,6 +114,7 @@ export class ProductComponent {
 
   ngOnInit(){
     this.getAllProducts();
+    this.getAllOrders();
   }
 
   //PEDIDO
@@ -125,6 +127,14 @@ export class ProductComponent {
     this.service.getOrder().subscribe(retorno => this.orders = retorno);
   }
 
-  //aaaa
+  //PRODUTOS PEDIDO
+
+  orderProduct = new OrderProduct();
+
+  orderProducts:OrderProduct[] = [];
+
+  getAllOrderProducts():void{
+    this.service.getOrderProduct().subscribe(retorno => this.orderProducts = retorno);
+  }
 
 }

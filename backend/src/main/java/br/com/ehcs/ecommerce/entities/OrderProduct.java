@@ -7,21 +7,33 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "tb_order_product")
-@Data
-@NoArgsConstructor
-public class OrderProduct {
+public class OrderProduct implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @EmbeddedId
     private OrderProductPK id = new OrderProductPK();
 
     private Integer quantity;
 
-    public OrderProduct(Product product, Order order, Integer quantity) {
-        id.setProduct(product);
+    public OrderProduct(){}
+
+    public OrderProduct(Order order, Product product, Integer quantity) {
         id.setOrder(order);
+        id.setProduct(product);
         this.quantity = quantity;
+    }
+
+    @JsonIgnore
+    public Order getOrder() {
+        return id.getOrder();
+    }
+
+    public void setOrder(Order order) {
+        id.setOrder(order);
     }
 
     public Product getProduct() {
@@ -32,13 +44,37 @@ public class OrderProduct {
         id.setProduct(product);
     }
 
-    @JsonIgnore
-    public Order getOder() {
-        return id.getOrder();
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setOrder(Order order) {
-        id.setOrder(order);
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        OrderProduct other = (OrderProduct) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
     }
 
 }

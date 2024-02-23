@@ -2,7 +2,8 @@ import { Product } from "./Product";
 
 export class OrderProduct {
 
-    produto:Product = new Product();
+    productId:number = 0;
+    orderId:number = 0;
     quantity:number = 0;
     
 }

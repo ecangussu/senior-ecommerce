@@ -83,15 +83,7 @@
         
         <div class="productDiv">
             <h4>Cliente</h4>
-            <input type="text" class="form-control">
-        </div>
-        <div class="productDiv">
-            <h4>Produtos</h4>
-            <input type="select" class="form-control">
-        </div>
-        <div class="productDiv">
-            <h4>Quantidade</h4>
-            <input type="number" class="form-control">
+            <input type="text" class="form-control" name="customerName" [(ngModel)]="order.customerName">
         </div>
     
         <input type="button" value="Cadastrar" *ngIf="btnRegister" class="btn btn-primary"    (click)="insertProduct()">
@@ -109,9 +101,8 @@
                 <th>id</th>
                 <th>Número</th>
                 <th>Cliente</th>
-                <th>Produtos</th>
-                <th>Quantidade total</th>
-                <th>Valor final</th>
+                <th>Valor Total</th>
+                <th>Data</th>
             </tr>
         </thead>
 
@@ -121,8 +112,7 @@
                 <td>{{c.id}}</td>
                 <td>{{c.number}}</td>
                 <td>{{c.customerName}}</td>
-                <td>{{c.orderProducts}}</td>
-                <td>{{c.finalValue}}</td>
+                <td>{{c.total}}</td>
                 <td>{{c.date}}</td>
                 <td><button class="btn btn-success" (click)="getProduct(n)">Selecionar</button></td>
             </tr>

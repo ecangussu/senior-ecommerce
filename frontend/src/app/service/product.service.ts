@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../model/Product';
 import { Order } from '../model/Order';
+import { OrderProduct } from '../model/OrderProduct';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class ProductService {
 
   private urlProduct:string = 'http://localhost:8080/products';
   private urlOrder:string = 'http://localhost:8080/orders';
+  private urlOrderProduct:string = 'http://localhost:8080/order-product'
 
   constructor(private http:HttpClient) { }
 
@@ -36,6 +38,12 @@ export class ProductService {
 
   getOrder():Observable<Order[]>{
     return this.http.get<Order[]>(this.urlOrder);
+  }
+
+  //PRODUTOS PEDIDO
+
+  getOrderProduct():Observable<OrderProduct[]>{
+    return this.http.get<OrderProduct[]>(this.urlOrderProduct);
   }
 
 }
