@@ -1,7 +1,7 @@
 export class Product{
 
     id:number = 0;
-    internalCode:number = 0;
+    internalCode:string = '';
     name:string = '';
     description:string = '';
     quantity:number = 0;
