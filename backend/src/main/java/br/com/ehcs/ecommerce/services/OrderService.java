@@ -43,10 +43,6 @@ public class OrderService {
         return orderRepository.save(orderProductAux.getOrder());
     }
 
-//    public Order insert(Order order) {
-//        return orderRepository.save(order);
-//    }
-
     public Order update(Long id, Order newOrder) {
         try {
             Order oldOrder = orderRepository.getOne(id);

@@ -38,13 +38,6 @@ public class OrderController {
         return ResponseEntity.created(uri).body(order);
     }
 
-//    @PostMapping
-//    public ResponseEntity<Order> insert(@RequestBody Order order) {
-//        order = orderService.insert(order);
-//        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(order.getId()).toUri();
-//        return ResponseEntity.created(uri).body(order);
-//    }
-
     @PutMapping(value = "/{id}")
     public ResponseEntity<Order> update(@PathVariable Long id, @RequestBody Order order) {
         order = orderService.update(id, order);
