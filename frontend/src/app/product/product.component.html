@@ -85,6 +85,14 @@
             <h4>Cliente</h4>
             <input type="text" class="form-control" name="customerName" [(ngModel)]="order.customerName">
         </div>
+        <div class="productDiv">
+            <h4>Produto</h4>
+            <input type="text" class="form-control" name="customerName" [(ngModel)]="order.customerName">
+        </div>
+        <div class="productDiv">
+            <h4>Quantidade</h4>
+            <input type="text" class="form-control" name="customerName" [(ngModel)]="order.customerName">
+        </div>
     
         <input type="button" value="Cadastrar" *ngIf="btnRegister" class="btn btn-primary"    (click)="insertProduct()">
         <input type="button" value="Alterar"   *ngIf="!btnRegister" class="btn btn-warning"   (click)="updateProduct()">

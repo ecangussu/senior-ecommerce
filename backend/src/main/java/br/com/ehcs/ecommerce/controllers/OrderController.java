@@ -1,6 +1,7 @@
 package br.com.ehcs.ecommerce.controllers;
 
 import br.com.ehcs.ecommerce.entities.Order;
+import br.com.ehcs.ecommerce.entities.OrderProductAux;
 import br.com.ehcs.ecommerce.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,11 +32,18 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<Order> insert(@RequestBody Order order) {
-        order = orderService.insert(order);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(order.getId()).toUri();
+    public ResponseEntity<Order> insert(@RequestBody OrderProductAux orderProductAux) {
+        Order order = orderService.insert(orderProductAux);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(orderProductAux.getOrder().getId()).toUri();
         return ResponseEntity.created(uri).body(order);
     }
+
+//    @PostMapping
+//    public ResponseEntity<Order> insert(@RequestBody Order order) {
+//        order = orderService.insert(order);
+//        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(order.getId()).toUri();
+//        return ResponseEntity.created(uri).body(order);
+//    }
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<Order> update(@PathVariable Long id, @RequestBody Order order) {
