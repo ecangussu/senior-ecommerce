@@ -21,7 +21,7 @@ public class ProductService {
 
     public Product findById(Long id) {
         Optional<Product> product = productRepository.findById(id);
-        return product.orElseThrow(() -> new IllegalStateException("Entity not found"));
+        return product.orElseThrow(() -> new IllegalStateException("Produto inexistente!"));
     }
 
     public Product insert(Product product) {
@@ -34,7 +34,7 @@ public class ProductService {
             Product updatedProduct = attProduct(oldProduct, newProduct);
             return productRepository.save(updatedProduct);
         } catch (EntityNotFoundException e) {
-            throw new EntityNotFoundException("Id not found " + id);
+            throw new EntityNotFoundException("Produto não encontrado " + id);
         }
     }
 
@@ -42,12 +42,11 @@ public class ProductService {
         try {
             productRepository.deleteById(id);
         } catch(EntityNotFoundException e) {
-            throw new EntityNotFoundException("Id not found " + id);
+            throw new EntityNotFoundException("Produto não encontrado: " + id);
         }
     }
 
     private Product attProduct(Product oldProduct, Product newProduct) {
-        oldProduct.setInternalCode(newProduct.getInternalCode());
         oldProduct.setName(newProduct.getName());
         oldProduct.setDescription(newProduct.getDescription());
         oldProduct.setQuantity(newProduct.getQuantity());

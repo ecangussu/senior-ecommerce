@@ -1,10 +1,13 @@
 package br.com.ehcs.ecommerce.services;
 
-import br.com.ehcs.ecommerce.entities.*;
+import br.com.ehcs.ecommerce.entities.Order;
+import br.com.ehcs.ecommerce.entities.Product;
+import br.com.ehcs.ecommerce.entities.OrderProduct;
+import br.com.ehcs.ecommerce.entities.OrderProductAux;
+import br.com.ehcs.ecommerce.entities.ProductAux;
 import br.com.ehcs.ecommerce.repositories.OrderProductRepository;
 import br.com.ehcs.ecommerce.repositories.OrderRepository;
 import br.com.ehcs.ecommerce.repositories.ProductRepository;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +32,7 @@ public class OrderService {
 
     public Order findById(Long id) {
         Optional<Order> order = orderRepository.findById(id);
-        return order.orElseThrow(() -> new IllegalStateException("Entity not found"));
+        return order.orElseThrow(() -> new IllegalStateException("Pedido inexistente!"));
     }
 
     public Order insert(OrderProductAux orderProductAux) {
@@ -43,7 +46,7 @@ public class OrderService {
                 orderProductRepository.save(orderProduct);
                 orderProductAux.getOrder().getOrderProducts().add(orderProduct);
             } else {
-                throw new IllegalStateException("Valor pedido maior do que em estoque!");
+                throw new IllegalStateException("Quantidade pedida maior do que em estoque!");
             }
         }
         return orderRepository.save(orderProductAux.getOrder());
