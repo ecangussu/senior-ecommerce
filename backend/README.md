@@ -79,8 +79,8 @@ COMO RODAR A APLICAÇÃO
             }
             ]
             }'
-            Obs.: não foram adicionadas as opções de atualização e remoção, pois o correto seria cancelar o pedido e iniciar um novo,
-            e não alterá-lo ou remove-lo. Fica como TODO
+        Obs.: não foram adicionadas as opções de atualização e remoção, pois o correto seria cancelar o pedido e iniciar um novo,
+        e não alterá-lo ou remove-lo. Fica como TODO
 
     2.BACKEND E FRONTEND
         -Necessário instalação do Node.js (verificar se já está instalado: node -v)
@@ -90,3 +90,15 @@ COMO RODAR A APLICAÇÃO
         -Recomendado uso de algum editor de texto (VS code)
         -Rodando o projeto: ng s
         -O sistema estará em execução em http://localhost:4200
+        
+Obs.: as telas de cadastro/exibição e de alteração/remoção de produtos estão funcionando, exibindo os produtos já existentes criados no 
+seeding do projeto e os novos criados tanto via curl quanto via interface (exceto pelo código interno que não está aceitando a criação 
+automatica no front) e alterando/atualizando e removendo os produtos conforme selecionados. A tela de cadastro/exibição de pedidos
+está somente exibindo a lista de pedidos já adicionados via seeding ou então novos pedidos adicionados via curl, porém o cadastro via 
+interface não está funcionando. A tela de relatórios também exibe normalmente os pedidos adicionados via seeding no código e também os 
+os adicionados via curl, mas não os cadastrados via interface, já que esse fluxo não ficou pronto.
+
+Resumindo: via backend todo o sistema está funcionando (seleção, criação, atualização e remoção de produtos e seleção e adição de pedidos)
+e no front os dados já adicionados via seeding e os novos dados adicionados via curl estão sendo exibidos em todas as telas (cadastro e 
+exibição de produtos, cadastro e exibição de pedidos e tela de relatórios de pedidos), porém via interface, é possível somente adicionar 
+produtos (sem código interno), e não pedidos.
