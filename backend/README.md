@@ -12,6 +12,8 @@ entidades utilizando Spring JPA; criação de perfil de testes utilizando banco 
 tela de alteração e remoção de produtos, tela de cadastro e exibição resumida de pedidos, tela de relatórios
 detalhados de pedidos).
 
+-TODO: adicionar logs, try catchs, validações, testes unitários e ambiente de produção
+
 TECNOLOGIAS UTILIZADAS
 
 Java 17 | SpringBoot 3.2.3 | Postman deskptop 10.23.5 | Intellij 17.0.9 | Banco de dados H2 | Angular 17.1.1 | Node 20.11.0 | npm 10.2.4
