@@ -38,7 +38,7 @@ public class Order implements Serializable {
     @Setter(AccessLevel.NONE)
     private Long id;
 
-    @Setter(AccessLevel.NONE)
+    @Column(unique = true)
     private String number = UUID.randomUUID().toString();
 
     private String customerName;
@@ -48,7 +48,6 @@ public class Order implements Serializable {
     private String email;
 
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    @Setter(AccessLevel.NONE)
     private Instant date = Instant.now();
 
     @OneToMany(mappedBy = "id.order")

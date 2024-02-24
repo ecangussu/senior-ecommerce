@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ProductService {
@@ -25,6 +26,9 @@ public class ProductService {
     }
 
     public Product insert(Product product) {
+        if(product.getInternalCode().isBlank()) {
+            product.setInternalCode(UUID.randomUUID().toString());
+        }
         return productRepository.save(product);
     }
 

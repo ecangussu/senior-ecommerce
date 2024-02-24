@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.AllArgsConstructor;
@@ -14,6 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.AccessLevel;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.UUID;
 import java.util.List;
@@ -27,12 +29,16 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class Product implements Serializable {
+
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter(AccessLevel.NONE)
     private Long id;
 
+    @Column(unique = true)
     private String internalCode = UUID.randomUUID().toString();
 
     private String name;
